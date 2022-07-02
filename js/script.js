@@ -41,3 +41,33 @@ function formSubmit(){
     }
 }
 formSubmit();
+
+function navShow(){
+    console.log('ok')
+    let animationElements=document.querySelectorAll('.animation-element');
+    let windowHight=window.screen.height;
+    let screen=window.pageYOffset; //создаём переменную, которая показывает на какой высоте сайта мы находимся
+    let nav=document.querySelector('#nav');
+    let navContact=document.querySelector('.nav__contact');
+    window.onscroll=function(){ 
+        for (let number=0;number<animationElements.length;number++){
+            let element=animationElements[number]
+            let elementHight=element.offsetTop;
+            console.log(elementHight)
+            let scrollHight=window.pageYOffset;
+            if (scrollHight+windowHight*0.8>elementHight){
+                element.classList.add('animation_active');
+            }
+        }       
+        let scrollHight=window.pageYOffset; //перезаписывается в момент прокрутки
+        if  (screen>scrollHight || scrollHight==0){ //если прокрутка вниз, то нав прячется
+            nav.style.top='0px';
+            navContact.style.top='52px';
+        }else{ // иначе, если прокрутка вверх, то нав показывается
+            nav.style.top='-200px';
+            navContact.style.top='-300px';
+        } 
+        screen=scrollHight; //перезапивывается в конце прокрутки
+    }  
+}
+navShow();

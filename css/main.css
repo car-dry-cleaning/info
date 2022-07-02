@@ -497,3 +497,12 @@ footer .container>p{
     color: #F5F5F5 !important;
     font-size: 1.8em;
 }
+.animation-element{
+    position: relative;
+    transition: all 1s;
+    opacity: 0;
+}
+.animation_active{
+    opacity: 1;
+    left: 0;
+}
