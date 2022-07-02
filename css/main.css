@@ -58,6 +58,7 @@ nav{
     background: #F5F5F5;
     z-index: 10;
     box-shadow: 0 0 4px #484746;
+    transition: 0.5s;
 }
 .container{
     max-width: 1200px;

@@ -48,6 +48,8 @@ function navShow(){
     let windowHight=window.screen.height;
     let screen=window.pageYOffset; //создаём переменную, которая показывает на какой высоте сайта мы находимся
     let nav=document.querySelector('#nav');
+    let startPosition = window.scrollY;
+
     let navContact=document.querySelector('.nav__contact');
     window.onscroll=function(){ 
         for (let number=0;number<animationElements.length;number++){
@@ -59,14 +61,18 @@ function navShow(){
                 element.classList.add('animation_active');
             }
         }       
-        let scrollHight=window.pageYOffset; //перезаписывается в момент прокрутки
-        if  (screen>scrollHight || scrollHight==0){ //если прокрутка вниз, то нав прячется
+        let scrollPosition=window.scrollY; //перезаписывается в момент прокрутки
+        if  (scrollPosition == 0){ //если прокрутка вниз, то нав прячется
             nav.style.top='0px';
             navContact.style.top='52px';
-        }else{ // иначе, если прокрутка вверх, то нав показывается
+        }else if(scrollPosition > startPosition && scrollPosition > 0){ // иначе, если прокрутка вверх, то нав показывается
             nav.style.top='-200px';
             navContact.style.top='-300px';
-        } 
+        }else{
+            nav.style.top='0px';
+            navContact.style.top='52px';
+        }
+        startPosition = scrollPosition;
         screen=scrollHight; //перезапивывается в конце прокрутки
     }  
 }
